@@ -11,3 +11,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+// global classes
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.profile-image-small {
+  height: 180px;
+}
+
+.profile-image-large {
+  height: 300px;
+}
