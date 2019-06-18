@@ -1,6 +1,7 @@
 import React from 'react';
 import {AppBar, Toolbar, Typography} from '@material-ui/core';
 import logo from '../../assets/okat_logo.jpg';
+import {NavLink} from 'react-router-dom';
 
 const Header: React.FC = () => {
   return (
@@ -8,9 +9,11 @@ const Header: React.FC = () => {
       <AppBar position="static">
         <Toolbar>
           <img src={logo} className="App-logo" alt="logo"/>
-          <Typography variant="h6" className="mx-3 cursor-pointer">
-            Home
-          </Typography>
+          <NavLink to="/" className="nav-link" activeClassName="nav-link-active">
+            <Typography variant="h6" className="mx-3 cursor-pointer">
+              Home
+            </Typography>
+          </NavLink>
         </Toolbar>
       </AppBar>
     </header>

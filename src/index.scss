@@ -24,3 +24,13 @@ code {
 .profile-image-large {
   height: 300px;
 }
+
+.nav-link {
+  color: lightgray;
+  &:hover {
+    color: white;
+  }
+  &.nav-link-active {
+    color: gold;
+  }
+}
