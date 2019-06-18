@@ -9,7 +9,7 @@ const Header: React.FC = () => {
       <AppBar position="static">
         <Toolbar>
           <img src={logo} className="App-logo" alt="logo"/>
-          <NavLink to="/" className="nav-link" activeClassName="nav-link-active">
+          <NavLink exact to="/" className="nav-link" activeClassName="nav-link-active">
             <Typography variant="h6" className="mx-3 cursor-pointer">
               Home
             </Typography>
