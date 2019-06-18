@@ -1,3 +1,4 @@
+// Deprecated
 export default [{
   id: 'c1',
   name: 'Grumpy',

@@ -6,7 +6,6 @@ import Header from '../../components/Header/Header';
 import {Route, Switch} from 'react-router';
 import Home from '../Home/Home';
 import Profile from '../Profile/Profile';
-import catsData from '../../cats-data-array'
 import {connect} from 'react-redux';
 import {Dispatch} from 'redux';
 import {catsDataSet} from '../../store/cats.data.reducer';
@@ -15,6 +14,7 @@ import {Cat} from '../../models/Cat';
 interface IProps {
   saveToStore: Function;
 }
+
 const App: React.FC<IProps> = ({saveToStore}) => {
   const theme = createMuiTheme({
     palette: {
@@ -25,8 +25,12 @@ const App: React.FC<IProps> = ({saveToStore}) => {
   });
   
   useEffect(() => {
-    const data = catsData.map(c => new Cat(c));
-    saveToStore(data);
+    fetch('/data/cats.json')
+      .then(res => res.json())
+      .then((data: Array<any>) => {
+        const cats = data.map(c => new Cat(c));
+        saveToStore(cats);
+      });
   }, [saveToStore]);
   
   return (
