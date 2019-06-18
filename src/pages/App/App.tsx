@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './App.scss';
 import {createMuiTheme} from '@material-ui/core';
 import {ThemeProvider} from '@material-ui/styles';
@@ -6,8 +6,16 @@ import Header from '../../components/Header/Header';
 import {Route, Switch} from 'react-router';
 import Home from '../Home/Home';
 import Profile from '../Profile/Profile';
+import catsData from '../../cats-data-array'
+import {connect} from 'react-redux';
+import {Dispatch} from 'redux';
+import {catsDataSet} from '../../store/cats.data.reducer';
+import {Cat} from '../../models/Cat';
 
-const App: React.FC = () => {
+interface IProps {
+  saveToStore: Function;
+}
+const App: React.FC<IProps> = ({saveToStore}) => {
   const theme = createMuiTheme({
     palette: {
       primary: {
@@ -16,12 +24,17 @@ const App: React.FC = () => {
     },
   });
   
+  useEffect(() => {
+    const data = catsData.map(c => new Cat(c));
+    saveToStore(data);
+  }, [saveToStore]);
+  
   return (
     <ThemeProvider theme={theme}>
       <Header/>
       <main className="p-3 App-main">
         <Switch>
-          <Route path="/profile" component={Profile}/>
+          <Route path="/profile/:id" component={Profile}/>
           <Route path="/" component={Home}/>
           <Route render={() => 'Page not found'}/>
         </Switch>
@@ -30,4 +43,8 @@ const App: React.FC = () => {
   );
 };
 
-export default App;
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  saveToStore: (data: Array<Cat>) => dispatch(catsDataSet(data))
+});
+
+export default connect(null, mapDispatchToProps)(App);

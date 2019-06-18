@@ -18,11 +18,15 @@ code {
 }
 
 .profile-image-small {
+  margin: auto;
+  display: block;
   height: 180px;
 }
 
 .profile-image-large {
-  height: 300px;
+  margin: auto;
+  display: block;
+  height: 400px;
 }
 
 .nav-link {

@@ -1,15 +1,27 @@
 import React from 'react';
 import ProfileCard from '../../components/ProfileCard/ProfileCard';
+import {IRootState} from '../../store/configureStore';
+import {connect} from 'react-redux';
+import {RouteComponentProps} from 'react-router';
+import {Cat} from '../../models/Cat';
 
-const Profile: React.FC = () => {
-  const catDescription = `
-  Hi, I'm cat. Like so many other humans, you might find cats to be mysterious creatures.
-  But believe it or not, it’s not that hard to make friends with a feline, if you know what to do.
-  `;
-  
-  return (
-    <ProfileCard imgSrc="/img/cat1.jpg" name="Cat 1" description={catDescription}/>
+interface IProps {
+  getCat: Function
+}
+const Profile: React.FC<IProps & RouteComponentProps> = ({match,getCat}) => {
+  const id = (match.params as {id: string}).id;
+  const cat:Cat = getCat(id);
+
+  return (!cat) ? null :(
+    <ProfileCard imgSrc={`/img/${cat.imgFile}`}
+                 age={cat.age}
+                 name={cat.name}
+                 description={cat.description}/>
   )
 };
 
-export default Profile;
+const mapStateToProps = (state: IRootState) => ({
+  getCat: (id:string) => state.cats.find(c => c.id === id),
+});
+
+export default connect(mapStateToProps)(Profile);
