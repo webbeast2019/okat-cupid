@@ -25,7 +25,7 @@ const App: React.FC<IProps> = ({getData}) => {
   
   // get data on app init
   useEffect(() => {
-    getData()
+    getData();
   });
   
   return (
