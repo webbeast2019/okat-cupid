@@ -11,3 +11,30 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+// global classes
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.profile-image-small {
+  margin: auto;
+  display: block;
+  height: 180px;
+}
+
+.profile-image-large {
+  margin: auto;
+  display: block;
+  height: 400px;
+}
+
+.nav-link {
+  color: lightgray;
+  &:hover {
+    color: white;
+  }
+  &.nav-link-active {
+    color: gold;
+  }
+}
