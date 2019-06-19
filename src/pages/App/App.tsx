@@ -25,7 +25,9 @@ const App: React.FC<IProps> = ({saveToStore}) => {
   });
   
   useEffect(() => {
-    fetch('/data/cats.json')
+    // see: https://facebook.github.io/create-react-app/docs/deployment#github-pages-https-pagesgithubcom
+    // https://facebook.github.io/create-react-app/docs/using-the-public-folder
+    fetch(process.env.PUBLIC_URL + '/data/cats.json')
       .then(res => res.json())
       .then((data: Array<any>) => {
         const cats = data.map(c => new Cat(c));

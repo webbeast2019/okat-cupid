@@ -10,12 +10,13 @@ interface IProps {
 }
 
 const Home: React.FC<IProps> = ({cats}) => {
+  // see: https://facebook.github.io/create-react-app/docs/using-the-public-folder
   return (
     <Grid container spacing={3}>
       {
         cats.map((c: Cat) => (
           <Grid item xs={6} key={c.id}>
-            <ProfileCard imgSrc={`/img/${c.imgFile}`}
+            <ProfileCard imgSrc={`${process.env.PUBLIC_URL}/img/${c.imgFile}`}
                          id={c.id}
                          name={c.name}
                          description={c.description}

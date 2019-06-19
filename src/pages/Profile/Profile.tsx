@@ -11,9 +11,10 @@ interface IProps {
 const Profile: React.FC<IProps & RouteComponentProps> = ({match,getCat}) => {
   const id = (match.params as {id: string}).id;
   const cat:Cat = getCat(id);
-
+  
+  // see: https://facebook.github.io/create-react-app/docs/using-the-public-folder
   return (!cat) ? null :(
-    <ProfileCard imgSrc={`/img/${cat.imgFile}`}
+    <ProfileCard imgSrc={`${process.env.PUBLIC_URL}/img/${cat.imgFile}`}
                  age={cat.age}
                  name={cat.name}
                  description={cat.description}/>
