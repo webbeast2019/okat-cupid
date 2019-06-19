@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/okat-cupid/precache-manifest.4d321d6395d59e6d44fd776fe5fa1976.js"
+  "/okat-cupid/precache-manifest.39baeddbd4714e166de2f8b6eea7c9d5.js"
 );
 
 self.addEventListener('message', (event) => {
