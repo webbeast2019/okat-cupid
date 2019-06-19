@@ -8,14 +8,13 @@ import Home from '../Home/Home';
 import Profile from '../Profile/Profile';
 import {connect} from 'react-redux';
 import {Dispatch} from 'redux';
-import {catsDataSet} from '../../store/cats.data.reducer';
-import {Cat} from '../../models/Cat';
+import {getCats} from '../../store/cats.api.middleware';
 
 interface IProps {
-  saveToStore: Function;
+  getData: Function;
 }
 
-const App: React.FC<IProps> = ({saveToStore}) => {
+const App: React.FC<IProps> = ({getData}) => {
   const theme = createMuiTheme({
     palette: {
       primary: {
@@ -24,16 +23,10 @@ const App: React.FC<IProps> = ({saveToStore}) => {
     },
   });
   
+  // get data on app init
   useEffect(() => {
-    // see: https://facebook.github.io/create-react-app/docs/deployment#github-pages-https-pagesgithubcom
-    // https://facebook.github.io/create-react-app/docs/using-the-public-folder
-    fetch(process.env.PUBLIC_URL + '/data/cats.json')
-      .then(res => res.json())
-      .then((data: Array<any>) => {
-        const cats = data.map(c => new Cat(c));
-        saveToStore(cats);
-      });
-  }, [saveToStore]);
+    getData()
+  });
   
   return (
     <ThemeProvider theme={theme}>
@@ -50,7 +43,7 @@ const App: React.FC<IProps> = ({saveToStore}) => {
 };
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  saveToStore: (data: Array<Cat>) => dispatch(catsDataSet(data))
+  getData: () => dispatch(getCats())
 });
 
 export default connect(null, mapDispatchToProps)(App);
