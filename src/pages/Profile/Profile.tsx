@@ -8,8 +8,10 @@ import {Cat} from '../../models/Cat';
 interface IProps {
   getCat: Function
 }
-const Profile: React.FC<IProps & RouteComponentProps> = ({match,getCat}) => {
-  const id = (match.params as {id: string}).id;
+export type RParams = { id: string };
+
+export const Profile: React.FC<IProps & RouteComponentProps<RParams>> = ({match,getCat}) => {
+  const id = match.params.id;
   const cat:Cat = getCat(id);
   
   // see: https://facebook.github.io/create-react-app/docs/using-the-public-folder

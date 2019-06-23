@@ -5,8 +5,11 @@
   "homepage": "https://webbeast2019.github.io/okat-cupid",
   "dependencies": {
     "@material-ui/core": "^4.1.1",
+    "@types/enzyme": "^3.9.4",
     "@types/react-redux": "^7.1.0",
     "@types/redux": "^3.6.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
     "gh-pages": "^2.0.1",
     "node-sass": "^4.12.0",
     "react": "^16.8.6",
@@ -14,6 +17,7 @@
     "react-redux": "^7.1.0",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
+    "react-test-renderer": "^16.8.6",
     "redux": "^4.0.1",
     "typescript": "3.5.2"
   },
@@ -30,11 +34,13 @@
   },
   "browserslist": [],
   "devDependencies": {
+    "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/jest": "24.0.15",
     "@types/node": "12.0.8",
     "@types/react": "16.8.20",
     "@types/react-dom": "16.8.4",
     "@types/react-router-dom": "^4.3.4",
+    "@types/react-test-renderer": "^16.8.2",
     "redux-devtools-extension": "^2.13.8"
   }
 }
