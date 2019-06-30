@@ -11,7 +11,7 @@ describe('<ProfileCard/>', () => {
   let shallow: typeof EnzymeShallow;
   let wrapper: ShallowWrapper;
   
-  beforeAll(() => {  // This is Mocha; in Jest, use beforeAll
+  beforeAll(() => {
     shallow = createShallow();
   });
   
@@ -19,7 +19,8 @@ describe('<ProfileCard/>', () => {
     wrapper = shallow(<ProfileCard imgSrc={`${process.env.PUBLIC_URL}/img/cat-default.jpg`}
                                    id={'cat-id'}
                                    name="Testy cat"
-                                   description="desc"/>)
+                                   description="desc"/>);
+  
   });
   
   it('should render without RouterLink element', () => {
@@ -27,9 +28,9 @@ describe('<ProfileCard/>', () => {
   });
   
   it('should render with 1 RouterLink element', () => {
-    wrapper.setProps({short: true});
+    wrapper.setProps({ short: true});
     expect(wrapper.find(RouterLink).length).toEqual(1);
-  })
+  });
 });
 
 
