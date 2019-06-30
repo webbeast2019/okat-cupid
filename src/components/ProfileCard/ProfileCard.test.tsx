@@ -20,7 +20,6 @@ describe('<ProfileCard/>', () => {
                                    id={'cat-id'}
                                    name="Testy cat"
                                    description="desc"/>);
-  
   });
   
   it('should render without RouterLink element', () => {
@@ -31,9 +30,21 @@ describe('<ProfileCard/>', () => {
     wrapper.setProps({ short: true});
     expect(wrapper.find(RouterLink).length).toEqual(1);
   });
+  
+  it('img class for short profile should be "profile-image-small"', () => {
+    wrapper.setProps({ short: true});
+    expect(wrapper.find('img.profile-image-small').length).toEqual(1);
+    expect(wrapper.find('img.profile-image-large').length).toEqual(0);
+  });
+  
+  it('img class for full profile should be "profile-image-large"', () => {
+    expect(wrapper.find('img.profile-image-small').length).toEqual(0);
+    expect(wrapper.find('img.profile-image-large').length).toEqual(1);
+  });
+  
+  it('img title should be equal to name', () => {
+    const name = 'This is a test cat';
+    wrapper.setProps({ name });
+    expect(wrapper.containsMatchingElement(<img title={name} />)).toEqual(true);
+  });
 });
-
-
-// 3. use wrapper.setProps({short: true})
-// expect(wrapper.find('img.profile-image-small').length).toEqual(0);
-// expect(wrapper.find('img.profile-image-large').length).toEqual(1);
