@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "6bf56ba97b1086cb4c2c035ccfbf4c2a",
+    "revision": "6648d6d12c434c5627f477a7c2bcb86f",
     "url": "/okat-cupid/index.html"
   },
   {
