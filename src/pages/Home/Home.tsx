@@ -15,7 +15,7 @@ const Home: React.FC<IProps> = ({cats}) => {
     <Grid container spacing={3}>
       {
         cats.map((c: Cat) => (
-          <Grid item xs={6} key={c.id}>
+          <Grid item xs={12} md={6} key={c.id}>
             <ProfileCard imgSrc={`${process.env.PUBLIC_URL}/img/${c.imgFile}`}
                          id={c.id}
                          name={c.name}
